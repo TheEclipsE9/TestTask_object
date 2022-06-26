@@ -13,7 +13,7 @@
 
         public double GetWindowHeight()
         {
-            return Bottom - Top;
+            return Top - Bottom;
         }
     }
 }
