@@ -11,10 +11,11 @@ namespace TestTask.Services
             _itemSplitterService = itemSplitterService;
         }
 
-        public List<Item> GetCorrectItemsWithoutSplitting(List<Item> itemList, double windowHeight)
+        public List<Item> GetCorrectItemsWithoutSplitting(List<Item> itemList, double windowBottom, double windowTop)
         {
             var correctItems = new List<Item>();
 
+            var windowHeight = windowTop - windowBottom;
             foreach (var item in itemList)
             {
                 if (windowHeight >= item.H2-item.H1)
@@ -26,11 +27,29 @@ namespace TestTask.Services
             return correctItems;
         }
         
-        public List<Item> GetCorrectItemsWithSplitting()
+        public List<Item> GetCorrectItemsWithSplitting(List<Item> itemList, double windowBottom, double windowTop)
         {
             var correctItems = new List<Item>();
+            var itemsToSplit = new List<Item>();
 
+            var itemsToCheck = new List<Item>(itemList);
 
+            foreach (var item in itemList)
+            {
+                if (_itemSplitterService.ShouldBeSplitted(item, windowBottom, windowTop))
+                {
+                    itemsToSplit.Add(item);
+                    itemsToCheck.Remove(item);
+                }
+            }
+
+            foreach (var item in itemsToSplit)
+            {
+                var splitedItems = _itemSplitterService.SplitItem(item, windowBottom, windowTop);
+                itemsToCheck.AddRange(splitedItems);
+            }
+
+            correctItems = GetCorrectItemsWithoutSplitting(itemsToCheck, windowBottom, windowTop);
 
             return correctItems;
         }

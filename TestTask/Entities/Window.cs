@@ -10,10 +10,5 @@
             Bottom = bottom;
             Top = top;
         }
-
-        public double GetWindowHeight()
-        {
-            return Top - Bottom;
-        }
     }
 }
