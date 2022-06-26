@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestTask.Types
+﻿namespace TestTask.Types
 {
-    public class ItemType
+    public enum ItemType
     {
+        TypeA = 0,
+        TypeB = 1,
+        TypeC = 2,
     }
 }

@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TestTask.Entities;
 
 namespace TestTask.Services
 {
     public class ItemSplitterService
     {
+        public bool ShouldBeSplitted()
+        {
+            return true;
+        }
+
+        public List<Item> SplitItem()
+        {
+            return null;
+        }
+
+        private double CalculateWeight()
+        {
+            return 0;
+        }
     }
 }

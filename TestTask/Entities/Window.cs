@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestTask.Entities
+﻿namespace TestTask.Entities
 {
     public class Window
     {
+        public double Bottom { get; set; }
+        public double Top { get; set; }
+
+        public Window(double bottom, double top)
+        {
+            Bottom = bottom;
+            Top = top;
+        }
+
+        public double GetWindowHeight()
+        {
+            return Bottom - Top;
+        }
     }
 }
