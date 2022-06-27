@@ -18,7 +18,7 @@ namespace TestTask.Services
             var windowHeight = windowTop - windowBottom;
             foreach (var item in itemList)
             {
-                if (windowHeight >= item.H2-item.H1)
+                if (windowHeight >= item.GetHeight())
                 {
                     correctItems.Add(item);
                 }
@@ -30,23 +30,18 @@ namespace TestTask.Services
         public List<Item> GetCorrectItemsWithSplitting(List<Item> itemList, double windowBottom, double windowTop)
         {
             var correctItems = new List<Item>();
-            var itemsToSplit = new List<Item>();
 
-            var itemsToCheck = new List<Item>(itemList);
+            var itemsToCheck = new List<Item>();
 
             foreach (var item in itemList)
             {
                 if (_itemSplitterService.ShouldBeSplitted(item, windowBottom, windowTop))
                 {
-                    itemsToSplit.Add(item);
-                    itemsToCheck.Remove(item);
+                    var splitedItems = _itemSplitterService.SplitItem(item, windowBottom, windowTop);
+                    itemsToCheck.AddRange(splitedItems);
+                    continue;
                 }
-            }
-
-            foreach (var item in itemsToSplit)
-            {
-                var splitedItems = _itemSplitterService.SplitItem(item, windowBottom, windowTop);
-                itemsToCheck.AddRange(splitedItems);
+                itemsToCheck.Add(item);
             }
 
             correctItems = GetCorrectItemsWithoutSplitting(itemsToCheck, windowBottom, windowTop);

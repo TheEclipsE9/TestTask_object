@@ -5,16 +5,17 @@ namespace TestTask.Services
     public class ItemSplitterService
     {
         public bool ShouldBeSplitted(Item item, double windowBottom, double windowTop)
-        {
-            return item.H2 - item.H1 > windowTop - windowBottom && (item.H1 < windowTop && item.H2 > windowBottom);
+        {            
+            var canBeSplittedByBottomBorder = item.H1 < windowBottom && item.H2 > windowBottom;
+            var canBeSplittedByTopBorder = item.H2 > windowTop && item.H1 < windowTop;
+            return canBeSplittedByBottomBorder || canBeSplittedByTopBorder;
         }
 
         public List<Item> SplitItem(Item item, double windowBottom, double windowTop)
         {
-            var splitedItems = new List<Item>();
-
             var parentItem = (Item)item.Clone();
-
+            var splitedItems = new List<Item> { parentItem };
+            
             if (item.H2 > windowTop)
             {
                 var upperItem = (Item)item.Clone();
@@ -31,8 +32,7 @@ namespace TestTask.Services
 
                 parentItem.H1 = windowBottom;
             }
-            splitedItems.Add(parentItem);
-
+            
             CalculateWeight(splitedItems, item);
 
             return splitedItems;
