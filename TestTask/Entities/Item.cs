@@ -2,7 +2,7 @@
 
 namespace TestTask.Entities
 {
-    public class Item : ICloneable
+    public class Item : ICloneable, IEquatable<Item?>
     {
         public double Weight { get; set; }
         public ItemType Type { get; set; }
@@ -42,6 +42,27 @@ namespace TestTask.Entities
         public object Clone()
         {
             return MemberwiseClone();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return Equals(obj as Item);
+        }
+
+        public bool Equals(Item? other)
+        {
+            return other is not null &&
+                   Weight == other.Weight &&
+                   Type == other.Type &&
+                   StartLiveTime == other.StartLiveTime &&
+                   EndLiveTime == other.EndLiveTime &&
+                   H1 == other.H1 &&
+                   H2 == other.H2;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Weight, Type, StartLiveTime, EndLiveTime, H1, H2);
         }
     }
 }

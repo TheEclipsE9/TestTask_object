@@ -9,13 +9,13 @@ namespace TestTask
         {
             var itemList = new List<Item>
             {
-                new Item(600, Types.ItemType.TypeA, DateTime.Now, DateTime.Now.AddMinutes(10), 1, 3),
-                new Item(15, Types.ItemType.TypeB, DateTime.Now, DateTime.Now.AddMinutes(10), 1, 4),
-                new Item(20, Types.ItemType.TypeC, DateTime.Now, DateTime.Now.AddMinutes(10), 1, 12),
-                new Item(22, Types.ItemType.TypeA, DateTime.Now, DateTime.Now.AddMinutes(10), 4, 8),
-                new Item(23, Types.ItemType.TypeC, DateTime.Now, DateTime.Now.AddMinutes(10), 3, 11),
+                new Item(10, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 1, 3), //проходит без разделения
+                new Item(15, Types.ItemType.TypeB, DateTime.Today, DateTime.Today.AddDays(1), 1, 5), //не проходит
+                new Item(20, Types.ItemType.TypeC, DateTime.Today, DateTime.Today.AddDays(1), 4, 8), //делится на 2 -- все проходят
+                new Item(24, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 3, 12), //делится на 3 -- все проходят
+                new Item(23, Types.ItemType.TypeC, DateTime.Today, DateTime.Today.AddDays(1), 1, 18), //делится на 3 -- 1 проходят
             };
-            var window = new Window(2, 10);
+            var window = new Window(6, 9);
 
             
             var _itemSplitterService = new ItemSplitterService();
