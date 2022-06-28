@@ -18,7 +18,6 @@ namespace TestTask.Tests.Services
             //prepare
             var splitterService = new ItemSplitterService();
 
-
             //act
             var result = splitterService.ShouldBeSplitted(item, windowBottom, windowTop);
 
@@ -32,7 +31,6 @@ namespace TestTask.Tests.Services
         {
             //prepare
             var splitterService = new ItemSplitterService();
-
 
             //act
             var result = splitterService.SplitItem(item, windowBottom, windowTop);
