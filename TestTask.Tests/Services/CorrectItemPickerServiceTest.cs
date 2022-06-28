@@ -14,14 +14,13 @@ namespace TestTask.Tests.Services
             var splitterService = new ItemSplitterService();// mock
             var pickerService = new CorrectItemPickerService(splitterService);
 
-
+            
             //act
             var actionList = pickerService.GetCorrectItemsWithoutSplitting(itemList, windowBottom, windowTop);
 
 
             //assert
-
-            CollectionAssert.AreEqual(expectedList, actionList, "Pick items that height is lower than window's height");
+            CollectionAssert.AreEquivalent(expectedList, actionList, "Pick items that height is lower than window's height");
         }
 
         [Test]
