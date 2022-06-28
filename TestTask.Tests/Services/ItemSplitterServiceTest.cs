@@ -16,14 +16,10 @@ namespace TestTask.Tests.Services
         public void ShouldBeSplitted(Item item, double windowBottom, double windowTop)
         {
             //prepare
-            var splitterService = new ItemSplitterService();
-
 
             //act
-            var result = splitterService.ShouldBeSplitted(item, windowBottom, windowTop);
 
             //assert
-            Assert.AreEqual(true, result, "Object should be splitted if it can be splitted by window");
         }
 
         [Test]
@@ -31,14 +27,10 @@ namespace TestTask.Tests.Services
         public void SplitItem(Item item, double windowBottom, double windowTop, List<Item> expectedList)
         {
             //prepare
-            var splitterService = new ItemSplitterService();
-
 
             //act
-            var result = splitterService.SplitItem(item, windowBottom, windowTop);
 
             //assert
-            CollectionAssert.AreEquivalent(expectedList, result);
         }
 
         static object[] ShuldBeSplittedItemCases =
