@@ -2,7 +2,7 @@
 
 namespace TestTask.Services
 {
-    public class ItemSplitterService
+    public class ItemSplitterService : IItemSplitterService
     {
         public bool ShouldBeSplitted(Item item, double windowBottom, double windowTop)
         {            
@@ -16,7 +16,7 @@ namespace TestTask.Services
             var parentItem = (Item)item.Clone();
             var splitedItems = new List<Item> { parentItem };
             
-            if (item.H2 > windowTop)
+            if (item.H2 > windowTop && item.H1 < windowTop)
             {
                 var upperItem = (Item)item.Clone();
                 upperItem.H1 = windowTop;
@@ -24,7 +24,7 @@ namespace TestTask.Services
 
                 parentItem.H2 = windowTop;
             }
-            if (item.H1 < windowBottom)
+            if (item.H1 < windowBottom && item.H2 > windowBottom)
             {
                 var bottomItem = (Item)item.Clone();
                 bottomItem.H2 = windowBottom;

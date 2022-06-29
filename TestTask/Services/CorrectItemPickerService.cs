@@ -4,9 +4,9 @@ namespace TestTask.Services
 {
     public class CorrectItemPickerService
     {
-        private readonly ItemSplitterService _itemSplitterService;
+        private readonly IItemSplitterService _itemSplitterService;
 
-        public CorrectItemPickerService(ItemSplitterService itemSplitterService)
+        public CorrectItemPickerService(IItemSplitterService itemSplitterService)
         {
             _itemSplitterService = itemSplitterService;
         }
