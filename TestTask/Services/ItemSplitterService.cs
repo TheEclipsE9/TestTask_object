@@ -43,7 +43,7 @@ namespace TestTask.Services
             foreach (var item in itemsList)
             {
                 var n = (parentItem.H2 - parentItem.H1) / (item.H2 - item.H1);
-                item.Weight = item.Weight / n;
+                item.Weight = Math.Round(item.Weight / n, 2);
             }
         }
     }

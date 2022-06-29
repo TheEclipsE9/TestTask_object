@@ -143,13 +143,13 @@ namespace TestTask.Tests.Services.Unit
             },
             new object[] //TestCase 3 -- split by by bottom => return 2 items
             {
-                new Item(0.8, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 9, 13),
+                new Item(1, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 9, 12),
                 10,
                 15,
                 new List<Item>
                 {
-                    new Item(0.2, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 9, 10),
-                    new Item(0.6, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 10, 13),
+                    new Item(0.33, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 9, 10),
+                    new Item(0.67, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 10, 12),
                 },
             },
         };
