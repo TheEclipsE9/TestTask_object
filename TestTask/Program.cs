@@ -9,11 +9,11 @@ namespace TestTask
         {
             var itemList = new List<Item>
             {
-                new Item(10, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 1, 3), //проходит без разделения
-                new Item(15, Types.ItemType.TypeB, DateTime.Today, DateTime.Today.AddDays(1), 1, 5), //не проходит
-                new Item(20, Types.ItemType.TypeC, DateTime.Today, DateTime.Today.AddDays(1), 4, 8), //делится на 2 -- все проходят
-                new Item(24, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 3, 12), //делится на 3 -- все проходят
-                new Item(23, Types.ItemType.TypeC, DateTime.Today, DateTime.Today.AddDays(1), 1, 18), //делится на 3 -- 1 проходят
+                new Item(10, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 1, 3), // picked without splitting
+                new Item(15, Types.ItemType.TypeB, DateTime.Today, DateTime.Today.AddDays(1), 1, 5), // not picked
+                new Item(20, Types.ItemType.TypeC, DateTime.Today, DateTime.Today.AddDays(1), 4, 8), // splitted for 2 -- all 2 picked
+                new Item(24, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 3, 12), // splitted for 3 -- all 3 picked
+                new Item(23, Types.ItemType.TypeC, DateTime.Today, DateTime.Today.AddDays(1), 1, 18), // splitted for 3 -- only 1 picked
             };
             var window = new Window(6, 9);
 
