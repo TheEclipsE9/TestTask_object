@@ -1,9 +1,8 @@
-﻿using Moq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TestTask.Entities;
 using TestTask.Services;
 
-namespace TestTask.Tests.Services.Integration
+namespace TestTask.Tests.Integration.Services
 {
     public class CorrectItemPickerServiceTest
     {
@@ -11,13 +10,13 @@ namespace TestTask.Tests.Services.Integration
         [TestCaseSource(nameof(ItemCasesWithoutSplitting))]
         public void GetCorrectItemsWithoutSplitting(List<Item> itemList, double windowBottom, double windowTop, List<Item> expectedResult)
         {
-            var splitterService = new ItemSplitterService();            
+            var splitterService = new ItemSplitterService();
             var pickerService = new CorrectItemPickerService(splitterService);
 
 
             var result = pickerService.GetCorrectItemsWithoutSplitting(itemList, windowBottom, windowTop);
 
-            
+
             CollectionAssert.AreEquivalent(expectedResult, result, "Pick items that height is lower than window's height");
         }
 
@@ -31,7 +30,7 @@ namespace TestTask.Tests.Services.Integration
 
             var actionList = pickerService.GetCorrectItemsWithSplitting(itemList, windowBottom, windowTop);
 
-                        
+
             CollectionAssert.AreEquivalent(expectedList, actionList, "Pick items that height is lower than window's height or quantity is not correct!");
         }
 
@@ -66,7 +65,7 @@ namespace TestTask.Tests.Services.Integration
                 new List<Item>
                 {
                     //empty
-                },                
+                },
             },
             new object[] //TestCase 3 -- All will be picked
             {

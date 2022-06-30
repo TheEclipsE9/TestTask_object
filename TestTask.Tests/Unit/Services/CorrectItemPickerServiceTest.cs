@@ -3,7 +3,7 @@ using NUnit.Framework;
 using TestTask.Entities;
 using TestTask.Services;
 
-namespace TestTask.Tests.Services.Unit
+namespace TestTask.Tests.Unit.Services
 {
     public class CorrectItemPickerServiceTest
     {

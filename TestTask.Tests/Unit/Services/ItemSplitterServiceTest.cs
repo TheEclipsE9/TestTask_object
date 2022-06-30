@@ -2,7 +2,7 @@
 using TestTask.Entities;
 using TestTask.Services;
 
-namespace TestTask.Tests.Services.Unit
+namespace TestTask.Tests.Unit.Services
 {
     public class ItemSplitterServiceTest
     {
@@ -24,7 +24,7 @@ namespace TestTask.Tests.Services.Unit
             var splitterService = new ItemSplitterService();
 
             var result = splitterService.SplitItem(item, windowBottom, windowTop);
-            
+
             CollectionAssert.AreEquivalent(expectedResult, result);
         }
 
@@ -118,7 +118,7 @@ namespace TestTask.Tests.Services.Unit
 
         static object[] SplitItemCases_SplitItems =
         {
-            new object[] //TestCase 1 -- split by by top and bottom => return 3 items
+            new object[] //TestCase 1 -- split by top and bottom => return 3 items
             {
                 new Item(30, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 3, 12),
                 6,
@@ -130,7 +130,7 @@ namespace TestTask.Tests.Services.Unit
                     new Item(10, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 9, 12),
                 },
             },
-            new object[] //TestCase 2 -- split by by top => return 2 items
+            new object[] //TestCase 2 -- split by top => return 2 items
             {
                 new Item(1, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 6, 10),
                 5,
@@ -141,7 +141,7 @@ namespace TestTask.Tests.Services.Unit
                     new Item(0.5, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 8, 10),
                 },
             },
-            new object[] //TestCase 3 -- split by by bottom => return 2 items
+            new object[] //TestCase 3 -- split by bottom => return 2 items
             {
                 new Item(1, Types.ItemType.TypeA, DateTime.Today, DateTime.Today.AddDays(1), 9, 12),
                 10,
